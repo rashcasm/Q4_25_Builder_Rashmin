@@ -70,9 +70,9 @@ pub struct Withdraw<'info> {
 impl<'info> Withdraw<'info> {
     pub fn withdraw(
         &mut self,
-        amount: u64, // Amount of LP tokens that the user wants to "burn"
-        min_x: u64,  // Minimum amount of token X that the user wants to receive
-        min_y: u64,  // Minimum amount of token Y that the user wants to receive
+        amount: u64, 
+        min_x: u64,  
+        min_y: u64, 
     ) -> Result<()> {
 
         require!(self.config.locked==false,AmmError::PoolLocked);
@@ -129,7 +129,7 @@ impl<'info> Withdraw<'info> {
         from:self.user_lp.to_account_info(),
         authority:self.user.to_account_info()
         };
-        // let signer_seeds:&[&[&[u8]]]=&[&[b"config",&self.config.seed.to_be_bytes(),&[self.config.config_bump]]];
+;
        let cpi_ctx=CpiContext::new(self.token_program.to_account_info(), cpi_accounts);
 
        burn(cpi_ctx, amount)
