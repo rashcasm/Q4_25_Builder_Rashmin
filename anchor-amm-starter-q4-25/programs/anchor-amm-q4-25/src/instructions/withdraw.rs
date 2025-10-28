@@ -129,7 +129,7 @@ impl<'info> Withdraw<'info> {
         from:self.user_lp.to_account_info(),
         authority:self.user.to_account_info()
         };
-;
+
        let cpi_ctx=CpiContext::new(self.token_program.to_account_info(), cpi_accounts);
 
        burn(cpi_ctx, amount)
