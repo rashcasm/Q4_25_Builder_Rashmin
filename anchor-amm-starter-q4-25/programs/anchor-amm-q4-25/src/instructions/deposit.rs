@@ -65,9 +65,9 @@ pub struct Deposit<'info> {
 impl<'info> Deposit<'info> {
     pub fn deposit(
         &mut self,
-        amount: u64, // Amount of LP tokens that the user wants to "claim"
-        max_x: u64,  // Maximum amount of token X that the user is willing to deposit
-        max_y: u64,  // Maximum amount of token Y that the user is willing to deposit
+        amount: u64, 
+        max_x: u64,
+        max_y: u64,  
     ) -> Result<()> {
         require!(self.config.locked == false, AmmError::PoolLocked);
         require!(amount != 0, AmmError::InvalidAmount);
@@ -92,11 +92,11 @@ impl<'info> Deposit<'info> {
 
         require!(x <= max_x && y <= max_y, AmmError::SlippageExceeded);
 
-        // deposit token x
+
         self.deposit_tokens(true, x)?;
-        // deposit token y
+
         self.deposit_tokens(false, y)?;
-        // mint lp tokens
+
         self.mint_lp_tokens(amount)
     }
 
